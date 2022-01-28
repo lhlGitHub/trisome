@@ -58,9 +58,9 @@
 2.一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。
 
 情况1： HTML 还没有被解析完的时候，async脚本已经加载完了，那么 HTML 停止解析，去执行脚本，脚本执行完毕后触发DOMContentLoaded事件。如下图所示：
-![image-20220104162634305](.\JS部分.assets\image-20220104162634305.png)
+![image-20220104162634305](./JS部分.assets/image-20220104162634305.png)
 情况2： HTML 解析完了之后，async脚本才加载完，然后再执行脚本，那么在HTML解析完毕、async脚本还没加载完的时候就触发DOMContentLoaded事件。如下图所示：
-![image-20220104162657199](.\JS部分.assets\image-20220104162657199.png)
+![image-20220104162657199](./JS部分.assets/image-20220104162657199.png)
 总之， DomContentLoaded 事件只关注 HTML 是否被解析完，而不关注 async 脚本。
 
 ## 3.3 defer
@@ -69,9 +69,9 @@
 2.DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。
 
 情况1：HTML还没解析完成时，defer脚本已经加载完毕，那么defer脚本将等待HTML解析完成后再执行。defer脚本执行完毕后触发DOMContentLoaded事件。如下图所示
-![image-20220104162715624](.\JS部分.assets\image-20220104162715624.png)
+![image-20220104162715624](./JS部分.assets/image-20220104162715624.png)
 情况2：HTML解析完成时，defer脚本还没加载完毕，那么defer脚本继续加载，加载完成后直接执行，执行完毕后触发DOMContentLoaded事件。如下图所示：
-![image-20220104162726574](.\JS部分.assets\image-20220104162726574.png)
+![image-20220104162726574](./JS部分.assets/image-20220104162726574.png)
 
 《JavaScript高级程序设计》一书的说法是:“按照h5规范，两个defer脚本会安装它们出现的先后顺序执行，两个脚本会在DOMContentLoaded之前执行。但事实上，defer脚本不一定会按顺序执行，也不一定会在DOMContentLoaded之前执行。”
 
@@ -130,7 +130,7 @@ V8 引擎采用的是分代式垃圾回收机制。目的是通过区分「临�
 
 **V8堆的整体大小就是新生代所用内存空间加上老生代的内存空间。**如下图：
 
-![image-20220105175758859](.\JS部分.assets\image-20220105175758859.png)
+![image-20220105175758859](./JS部分.assets/image-20220105175758859.png)
 
 #### **V8新生代算法（Scavenge）**
 
@@ -168,7 +168,7 @@ Mark-Sweep是标记清除的意思，它分为标记和清除两个阶段。**Ma
 
 为了解决Mark-Sweep的内存碎片问题，Mark-Compact被提出来。Mark-Compact是标记整理的意思。**在标记清除的过程中，将活着的对象往一端移动，移动完成后，直接清理掉边界外的内存。**完成移动后，就可以直接清除最右边的存活对象后面的内存区域完成回收。
 
-![image-20220105175717945](.\JS部分.assets\image-20220105175717945.png)
+![image-20220105175717945](./JS部分.assets/image-20220105175717945.png)
 
 #### **增量式标记回收(Incremental Marking)**
 
